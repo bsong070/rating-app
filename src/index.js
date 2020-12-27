@@ -1,17 +1,40 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+class Rating extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            input: "",
+            results: false,
+        }
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+        this.viewResults = this.viewResults.bind(this);
+
+    }
+
+    viewResults() {
+        this.setState({
+            results:true
+        })
+    }
+
+    render(){
+        return(
+            <div id="div-parent">
+                <div id="title-page">
+                    <h1>Rank Your Top Choices</h1>
+                </div>
+                <div id="rating-container">
+                    <input id="rating-input" type="number" min="0" max="5" placeholder="Enter Rating Between 0-5"></input> 
+                    <button id="submit-button">Submit Rating</button>
+                </div>
+
+            </div>
+
+        )
+    }
+}
+
+ReactDOM.render(<Rating />,document.getElementById("root"))
